@@ -1,0 +1,209 @@
+:root{
+    /*primary colors*/
+    --Marine-blue: hsl(213, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsla(228, 100%, 84%, 0.212);
+    --Light-blue: hsla(206, 94%, 87%, 0.347);
+    --Strawberry-red: hsl(354, 84%, 57%);
+
+    /*neutral colors*/
+    --Cool-gray: hsla(231, 11%, 63%, 0.653);
+    --Light-gray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+}
+
+/*class styles*/
+.hide{display: none;}
+.show{display: block;}
+
+/*reset default settings*/
+html, body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.3;
+    font-size: 16px;
+    background-color: var(--Light-blue);
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    position: relative;
+    min-height: 100vh;
+}
+h1, h2, h3, p{
+    margin: 0;
+}
+
+/*top background image*/
+#top-background-image{
+    background-image: url(assets/images/bg-sidebar-mobile.svg);
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+}
+
+/*Bottom container*/
+#bottom-container{
+    background-color: var(--White);
+    padding: 1rem;
+    width: 100%;
+    bottom: 0;
+    box-sizing: border-box;
+    position: absolute;
+}
+/*Next button*/
+.next-btn{
+    padding: 0.7rem 1.5rem;
+    border: 0;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: var(--White);
+    background-color: var(--Marine-blue);
+    position: relative;
+    left: 75%;
+}
+.next-btn:hover{background-color: hsla(213, 96%, 18%, 0.603);}
+/*Go back button*/
+.go-back-btn{
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    color:hsla(213, 96%, 18%, 0.603);
+    right: 25%;
+    border: 0;
+    position: relative;
+    background-color: transparent;
+}
+.go-back-btn:hover{color: var(--Marine-blue);}
+
+/*Page indicatos*/
+#page-indicators{
+    top: 12%;
+    left: 50%;
+    gap: 20px;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+    position: absolute;
+    display: flex;
+    text-align: center;
+}
+.indicators{
+    font-size: 1rem;
+    width: 20px;
+    height: 20px;
+    padding: 0.3rem;
+    border-radius: 50px;
+    color: var(--White);
+    border: 1px solid var(--White);
+    background-color: transparent;
+}
+
+
+/*form container*/
+form{
+    width: min(90%, 50rem);
+    background-color: var(--White);
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+    translate: 0% -10%;
+    box-shadow: 2px 10px 15px 2px rgba(0, 0, 0, 0.183);
+    box-sizing: border-box;
+    margin-inline: auto;
+    position: relative;
+}
+
+/*PAGE ONE*/
+#page-one h1{
+    color: var(--Marine-blue);
+    margin-bottom: 0.3rem;
+}
+#page-one-instruction{
+    opacity: 50%;
+}
+#page-one-input-container{
+    margin-top: 1rem;
+}
+.page-one-containers{
+    margin-top: 1.5rem;
+}
+#page-one-input-container label{
+    color: var(--Marine-blue);
+}
+#page-one-input-container input{
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1.5px solid var(--Light-gray);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+#page-one-input-container input:hover{
+    border-color: var(--Purplish-blue);
+}
+#page-one-input-container input:focus{
+    outline: none;
+    border-color: var(--Purplish-blue);
+}
+.label-and-error-message{
+    display: flex;
+    justify-content: space-between;
+}
+.error-message{
+    font-size: 0.8rem;
+    color: red;
+}
+
+
+
+/*MEDIA QUERY*/
+@media (max-width: 800px){
+    #desktop-next-btn{display: none;}
+    #desktop-go-back-btn{display: none;}
+}
+@media (min-width: 800px) {
+    #top-background-image{display: none;};
+    #page-indicators{display: none;};
+    #bottom-container{display: none;}
+    #page-one-input-container{
+        margin-top: 1.5rem;
+    }
+
+    body{
+        place-content: center;
+    };
+
+    .next-btn{
+        position: relative;
+        translate: 20% 105%;
+    }
+    .go-back-btn{
+        position: relative;
+        translate: -3% 110%;
+        display: none;
+    }
+
+
+    form{
+        gap: 60px;
+        height: 500px;
+        translate: none;
+        display: flex;
+    }
+
+    #desktop-background-image{
+        width: 60%;
+        border-radius: 10px;
+        background-image: url(assets/images/bg-sidebar-desktop.svg);
+        background-repeat: none;
+        background-position: center;
+        background-size: cover;
+    }
+
+    #page-containers{
+        width: 100%;
+        padding: 1.5rem 3rem;
+    }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Step Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--MOBILE-->
+    <div id="top-background-image"></div>
+
+    <!--MOBILE-->
+    <div id="bottom-container">
+        <!--the next btn and go back btn have a class and id attribut. 
+        The id is used to remove the btn when the screensize is below 800px, 
+        but because it is in bottom container, it becomes visible when the bottom container becomes visible for mobile.
+        The class attribute helps to maintain a consistent style regardless of the screen size, 
+        and is set (using the class attribute)
+        to be visible when the screensize is above 800px
+        This helps prevent the need to create more than 1 btn that serves the same purpose-->
+        <button class="next-btn">Next</button>
+
+        <button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>
+    </div>
+
+    <!--MOBILE-->
+    <div id="page-indicators">
+        <div class="indicators">1</div>
+        <div class="indicators">2</div>
+        <div class="indicators">3</div>
+        <div class="indicators">4</div>
+    </div>
+
+    <form action="">
+        <div id="desktop-background-image"></div>
+
+        <div id="page-containers">
+            <div id="page-one">
+                <h1>Personal Info</h1>
+                <p id="page-one-instruction">Please provide your name, email address, and phone number</p>
+    
+                <div id="page-one-input-container">
+                    <div class="page-one-containers">
+                        <div class="label-and-error-message">
+                            <label for="name">Name</label><br>
+                            <p class="error-message hide">This field is required</p>
+                        </div>
+                        <input type="text" id="name" placeholder="e.g Stephen King">
+                    </div>
+    
+                    <div class="page-one-containers">
+                        <div class="label-and-error-message">
+                            <label for="email">Email</label><br>
+                            <p class="error-message hide">This field is required</p>
+                        </div>
+                        <input type="text" id="email" placeholder="e.g stephenKing@lorem.com">
+                    </div>
+    
+                    <div class="page-one-containers">
+                        <div class="label-and-error-message">
+                            <label for="number">Phone Number</label><br>
+                            <p class="error-message hide">This field is required</p>
+                        </div>
+                        <input type="text" id="number" placeholder="e.g +234 9033 1184 77">
+                    </div>
+    
+                </div>
+            </div>
+
+
+
+
+            <button class="next-btn" id="desktop-next-btn">Next</button>
+            <button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>
+        </div>
+    </form>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
