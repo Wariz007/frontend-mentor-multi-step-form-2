@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
     <title>Multi Step Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,16 +13,9 @@
 
     <!--MOBILE-->
     <div id="bottom-container">
-        <!--the next btn and go back btn have a class and id attribut. 
-        The id is used to remove the btn when the screensize is below 800px, 
-        but because it is in bottom container, it becomes visible when the bottom container becomes visible for mobile.
-        The class attribute helps to maintain a consistent style regardless of the screen size, 
-        and is set (using the class attribute)
-        to be visible when the screensize is above 800px
-        This helps prevent the need to create more than 1 btn that serves the same purpose-->
         <button class="next-btn">Next</button>
 
-        <button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>
+        <!--<button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>-->
     </div>
 
     <!--MOBILE-->
@@ -33,46 +27,85 @@
     </div>
 
     <form action="">
-        <div id="desktop-background-image"></div>
+        <!--desktop background image containing page indicators-->
+        <div id="desktop-background-image">
+            <div class="page-indicators-desktop">
 
-        <div id="page-containers">
-            <div id="page-one">
-                <h1>Personal Info</h1>
-                <p id="page-one-instruction">Please provide your name, email address, and phone number</p>
-    
-                <div id="page-one-input-container">
-                    <div class="page-one-containers">
-                        <div class="label-and-error-message">
-                            <label for="name">Name</label><br>
-                            <p class="error-message hide">This field is required</p>
-                        </div>
-                        <input type="text" id="name" placeholder="e.g Stephen King">
+                <div class="page-indicator-containers">
+                    <div class="indicators">1</div>
+                    <div class="steps-and-heading">
+                        <p>Step 1</p>
+                        <h3>Your Info</h3>
                     </div>
-    
-                    <div class="page-one-containers">
-                        <div class="label-and-error-message">
-                            <label for="email">Email</label><br>
-                            <p class="error-message hide">This field is required</p>
-                        </div>
-                        <input type="text" id="email" placeholder="e.g stephenKing@lorem.com">
+                </div>
+        
+                <div class="page-indicator-containers">
+                    <div class="indicators">2</div>
+                    <div class="steps-and-heading">
+                        <p>Step 2</p>
+                        <h3>Your Info</h3>
                     </div>
-    
-                    <div class="page-one-containers">
-                        <div class="label-and-error-message">
-                            <label for="number">Phone Number</label><br>
-                            <p class="error-message hide">This field is required</p>
-                        </div>
-                        <input type="text" id="number" placeholder="e.g +234 9033 1184 77">
+                </div>
+        
+                <div class="page-indicator-containers">
+                    <div class="indicators">3</div>
+                    <div class="steps-and-heading">
+                        <p>Step 3</p>
+                        <h3>Your Info</h3>
                     </div>
-    
+                </div>
+        
+                <div class="page-indicator-containers">
+                    <div class="indicators">4</div>
+                    <div class="steps-and-heading">
+                        <p>Step 3</p>
+                        <h3>Your Info</h3>
+                    </div>
                 </div>
             </div>
+        </div>
 
-
-
-
-            <button class="next-btn" id="desktop-next-btn">Next</button>
-            <button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>
+        <!--container for pages and btns for desktop screen size-->
+        <div id="pages-and-btns">
+            <div id="page-containers">
+                <div id="page-one">
+                    <h1>Personal Info</h1>
+                    <p id="page-one-instruction">Please provide your name, email address, and phone number</p>
+        
+                    <div id="page-one-input-container">
+                        <div class="page-one-containers">
+                            <div class="label-and-error-message">
+                                <label for="name">Name</label><br>
+                                <p class="error-message hide" id="name-error-message">This field is required</p>
+                            </div>
+                            <input type="text" id="name" placeholder="e.g Stephen King">
+                        </div>
+        
+                        <div class="page-one-containers">
+                            <div class="label-and-error-message">
+                                <label for="email">Email</label><br>
+                                <p class="error-message hide" id="email-error-message">This field is required</p>
+                            </div>
+                            <input type="text" id="email" placeholder="e.g stephenKing@lorem.com">
+                        </div>
+        
+                        <div class="page-one-containers">
+                            <div class="label-and-error-message">
+                                <label for="number">Phone Number</label><br>
+                                <p class="error-message hide" id="number-error-message">This field is required</p>
+                            </div>
+                            <input type="text" id="number" placeholder="e.g +234 9033 1184 77">
+                        </div>
+        
+                    </div>
+                </div>
+                
+            </div>
+    
+    
+            <div id="bottom-container-desktop">
+                <button class="next-btn">Next</button>
+            </div>
         </div>
     </form>
 

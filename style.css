@@ -98,6 +98,7 @@ h1, h2, h3, p{
     border-radius: 50px;
     color: var(--White);
     border: 1px solid var(--White);
+    text-align: center;
     background-color: transparent;
 }
 
@@ -159,32 +160,28 @@ form{
 
 
 /*MEDIA QUERY*/
-@media (max-width: 800px){
-    #desktop-next-btn{display: none;}
-    #desktop-go-back-btn{display: none;}
+/*to remove the next btn in the desktop screensize when 
+width is below 800px*/
+@media (max-width: 800px) {
+    #bottom-container-desktop{
+        display: none;
+    }
+    .page-indicators-desktop{display: none;}
 }
+
 @media (min-width: 800px) {
+    /*elements to remove from desktop screensize*/
     #top-background-image{display: none;};
-    #page-indicators{display: none;};
     #bottom-container{display: none;}
+    #page-indicators{display: none;}
     #page-one-input-container{
         margin-top: 1.5rem;
     }
 
+    /*to place the form at the center of the screen*/
     body{
         place-content: center;
     };
-
-    .next-btn{
-        position: relative;
-        translate: 20% 105%;
-    }
-    .go-back-btn{
-        position: relative;
-        translate: -3% 110%;
-        display: none;
-    }
-
 
     form{
         gap: 60px;
@@ -194,16 +191,46 @@ form{
     }
 
     #desktop-background-image{
-        width: 60%;
+        width: 35%;
         border-radius: 10px;
         background-image: url(assets/images/bg-sidebar-desktop.svg);
         background-repeat: none;
         background-position: center;
         background-size: cover;
     }
-
+    .page-indicators-desktop{
+        padding: 2rem 1rem 0 1.5rem; 
+    };
+    .page-indicator-containers{
+        margin-bottom: 1rem;
+        display: flex;
+    }
+    .steps-and-heading{
+        margin-left: 1rem;
+        color: var(--White);
+        text-align: left;
+    }
+    #pages-and-btns{
+        display: flex;
+        flex-direction: column;
+    }
     #page-containers{
-        width: 100%;
         padding: 1.5rem 3rem;
     }
+    #bottom-container-desktop{
+        margin-top: 1rem;
+    }
+
 }
+
+/*The steps indicator and bottom container appear in 2 places depending
+on the screeensize; when it's mobile, the indicators are at the top of the
+screen, while the bottom container for the next btn and go back btn 
+are below the screen. I don't want to create 2 btns for each actions 
+that are meant to serve the same purpose, so I had to find a way to make sure the 
+same elements that appeared for mobile are the same ones that also appear for desktop screensize.
+To do this, I applied a class style to the elements that make the styles consistent
+across screen sizes, then I duplicate the containers the btns are in to the desktop screen size.
+Then I use querySelectorAll and the forEach method to make sure the actions set
+are applied to the element regardless of what screensize they appear in. Note that I apply display none
+to their respective containers depending on the screensize of the user
