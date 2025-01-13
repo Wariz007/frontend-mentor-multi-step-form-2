@@ -32,7 +32,7 @@ body{
     position: relative;
     min-height: 100vh;
 }
-h1, h2, h3, p{
+h1, h2, h3, h4, p{
     margin: 0;
 }
 
@@ -81,7 +81,7 @@ h1, h2, h3, p{
 
 /*Page indicatos*/
 #page-indicators{
-    top: 12%;
+    top: 9%;
     left: 50%;
     gap: 20px;
     transform: translate(-50%, -50%);
@@ -109,7 +109,7 @@ form{
     background-color: var(--White);
     padding: 1.5rem 1rem;
     border-radius: 10px;
-    translate: 0% -10%;
+    translate: 0% -15%;
     box-shadow: 2px 10px 15px 2px rgba(0, 0, 0, 0.183);
     box-sizing: border-box;
     margin-inline: auto;
@@ -118,14 +118,12 @@ form{
 
 /*PAGE ONE*/
 #page-one h1{
+    font-size: 1.5rem;
     color: var(--Marine-blue);
     margin-bottom: 0.3rem;
 }
 #page-one-instruction{
     opacity: 50%;
-}
-#page-one-input-container{
-    margin-top: 1rem;
 }
 .page-one-containers{
     margin-top: 1.5rem;
@@ -158,6 +156,48 @@ form{
 }
 
 
+/*PAGE TWO*/
+#page-two h1{
+    font-size: 1.5rem;
+    color: var(--Marine-blue);
+    margin-bottom: 0.3rem;
+}
+#plans-btns-container button{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1.5px solid var(--Cool-gray);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+#plans-btns-container button:hover{
+    border-color: var(--Purplish-blue);
+    background-color: var(--Pastel-blue);
+}
+.plan-and-price{
+    margin-left: 0.5rem;
+    text-align: left;
+}
+.name-of-plan{
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    color: var(--Marine-blue);
+    font-weight: bold;
+}
+.price-of-plan{
+    font-size: 0.8rem;
+    opacity: 50%;
+}
+.two-months-free{
+    font-size: 0.6rem;
+    color: var(--Marine-blue);
+    margin-top: 0.3rem;
+}
+
+
+
 
 /*MEDIA QUERY*/
 /*to remove the next btn in the desktop screensize when 
@@ -178,20 +218,25 @@ width is below 800px*/
         margin-top: 1.5rem;
     }
 
+    /*PAGE ONE*/
     /*to place the form at the center of the screen*/
     body{
         place-content: center;
     };
 
     form{
-        gap: 60px;
+        gap: 30px;
         height: 500px;
         translate: none;
         display: flex;
     }
 
+    #pages-and-btns{
+        width: 100%;
+    }
+
     #desktop-background-image{
-        width: 35%;
+        width: 50%;
         border-radius: 10px;
         background-image: url(assets/images/bg-sidebar-desktop.svg);
         background-repeat: none;
@@ -204,6 +249,12 @@ width is below 800px*/
     .page-indicator-containers{
         margin-bottom: 1rem;
         display: flex;
+    }
+    .steps-and-heading p{
+        opacity: 50%;
+    }
+    .steps-and-heading h3{
+        font-size: 1rem;
     }
     .steps-and-heading{
         margin-left: 1rem;
@@ -221,6 +272,20 @@ width is below 800px*/
         margin-top: 1rem;
     }
 
+    /*PAGE TWO*/
+    #plans-btns-container{
+        gap: 10px;
+        box-sizing: border-box;
+        display: flex;
+    }
+    #plans-btns-container button{
+        gap: 60px;
+        padding-left: 0.5rem;
+        flex-direction: column;
+        align-items: start;
+    }
+
+
 }
 
 /*The steps indicator and bottom container appear in 2 places depending
@@ -234,3 +299,64 @@ across screen sizes, then I duplicate the containers the btns are in to the desk
 Then I use querySelectorAll and the forEach method to make sure the actions set
 are applied to the element regardless of what screensize they appear in. Note that I apply display none
 to their respective containers depending on the screensize of the user
+
+/*code for toggle button*/
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 57px;
+    height: 20px;
+}
+/*hide default html checkbox*/
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+/*the slider*/
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--Marine-blue);
+    transition: .4s;
+    -webkit-transition: .4s;
+}
+.slider:before{
+    position: absolute;
+    content: '';
+    height: 15px;
+    width: 15px;
+    left: 10px;
+    bottom: 2px;
+    background-color: var(--White);
+    transition: .4s;
+    -webkit-transition: .4s;
+}
+input:checked + .slider:before{
+    -webkit-transform: translatex(26px);
+    -ms-transform: translatex(26px);
+    transform: translateX(26px);
+}
+/*rounded sliders*/
+.slider.round{
+    border-radius: 34px;
+}
+.slider.round:before{
+    border-radius: 50%;
+}
+#toggle-container{
+    padding: 0.5rem;
+    gap: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    background-color: var(--Magnolia);
+}
+#toggle-container p{
+    font-size: 0.9rem;
+}

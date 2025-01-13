@@ -15,15 +15,15 @@
     <div id="bottom-container">
         <button class="next-btn">Next</button>
 
-        <!--<button class="go-back-btn" id="desktop-go-back-btn">Go Back</button>-->
+        <button class="go-back-btn hide" id="desktop-go-back-btn">Go Back</button>
     </div>
 
     <!--MOBILE-->
     <div id="page-indicators">
-        <div class="indicators">1</div>
-        <div class="indicators">2</div>
-        <div class="indicators">3</div>
-        <div class="indicators">4</div>
+        <div class="indicators indicator-one">1</div>
+        <div class="indicators indicator-two">2</div>
+        <div class="indicators indicator-three">3</div>
+        <div class="indicators indicator-four">4</div>
     </div>
 
     <form action="">
@@ -32,34 +32,34 @@
             <div class="page-indicators-desktop">
 
                 <div class="page-indicator-containers">
-                    <div class="indicators">1</div>
+                    <div class="indicators indicator-one">1</div>
                     <div class="steps-and-heading">
                         <p>Step 1</p>
-                        <h3>Your Info</h3>
+                        <h3>YOUR INFO</h3>
                     </div>
                 </div>
         
                 <div class="page-indicator-containers">
-                    <div class="indicators">2</div>
+                    <div class="indicators indicator-two">2</div>
                     <div class="steps-and-heading">
                         <p>Step 2</p>
-                        <h3>Your Info</h3>
+                        <h3>SELECT PLAN</h3>
                     </div>
                 </div>
         
                 <div class="page-indicator-containers">
-                    <div class="indicators">3</div>
+                    <div class="indicators indicator-three">3</div>
                     <div class="steps-and-heading">
                         <p>Step 3</p>
-                        <h3>Your Info</h3>
+                        <h3>ADD-ONS</h3>
                     </div>
                 </div>
         
                 <div class="page-indicator-containers">
-                    <div class="indicators">4</div>
+                    <div class="indicators indicator-four">4</div>
                     <div class="steps-and-heading">
-                        <p>Step 3</p>
-                        <h3>Your Info</h3>
+                        <p>Step 4</p>
+                        <h3>SUMMARY</h3>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
         <!--container for pages and btns for desktop screen size-->
         <div id="pages-and-btns">
             <div id="page-containers">
+
                 <div id="page-one">
                     <h1>Personal Info</h1>
                     <p id="page-one-instruction">Please provide your name, email address, and phone number</p>
@@ -99,12 +100,77 @@
         
                     </div>
                 </div>
+
+                <div id="page-two" class="hide">
+                    <h1>Select Your Plan</h1>
+                    <p id="page-one-instruction">You have the option of monthly or yearly billing.</p>
+
+                    <div id="plans-btns-container">
+
+                        <button id="arcade-btn" type="button">
+                            <img src="assets/images/icon-arcade.svg" alt="">
+                            <div class="plan-and-price">
+                                <p class="name-of-plan">Arcade</p>
+                                <p class="price-of-plan" id="arcade-monthly-price">$9/mo</p>
+
+                                <div class="hide" id="arcde-yearly-plan">
+                                    <p class="price-of-plan">$90/yr</p>
+                                    <p class="two-months-free">2 months free plan</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button id="advanced-btn" type="button">
+                            <img src="assets/images/icon-advanced.svg" alt="">
+                            <div class="plan-and-price">
+                                <p class="name-of-plan">Advanced</p>
+                                <p class="price-of-plan" id="advanced-monthly-price">$12/mo</p>
+
+                                <div class="hide" id="advanced-yearly-plan">
+                                    <p class="price-of-plan">$120/yr</p>
+                                    <p class="two-months-free">2 months free plan</p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button id="pro-btn" type="button">
+                            <img src="assets/images/icon-pro.svg" alt="">
+                            <div class="plan-and-price">
+                                <p class="name-of-plan">Pro</p>
+                                <p class="price-of-plan" id="pro-monthly-price">$15/mo</p>
+
+                                <div class="hide" id="pro-yearly-plan">
+                                    <p class="price-of-plan">$150/yr</p>
+                                    <p class="two-months-free">2 months free plan</p>
+                                </div>
+                            </div>
+                        </button>
+
+                    </div>
+
+                    <!--Toggle btn-->
+                    <div id="toggle-container">
+                        <p>Monthly</p>
+                        <!--Toggle button-->
+                        <label class="switch">
+                          <input type="checkbox" id="monthly-or-yearly">
+                          <span class="slider round"></span>
+                        </label>
+                        <p>Yearly</p>
+                      </div>
+                </div>
+
+
+
+
                 
             </div>
     
     
             <div id="bottom-container-desktop">
                 <button class="next-btn">Next</button>
+
+                <button class="go-back-btn hide" id="desktop-go-back-btn">Go Back</button>
             </div>
         </div>
     </form>

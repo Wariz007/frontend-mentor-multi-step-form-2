@@ -1,3 +1,7 @@
+//PAGES
+const pageOne = document.getElementById('page-one');
+const pageTwo = document.getElementById('page-two');
+
 //PAGE ONE
 const nameContainer = document.getElementById('name');
 const nameErrorMessage = document.getElementById('name-error-message');
@@ -9,8 +13,32 @@ const phoneNumberContainer = document.getElementById('number');
 const phoneNumberErrorMessage = document.getElementById('number-error-message');
 
 const pageOneNextBtn = document.querySelectorAll('.next-btn');
-console.log(pageOneNextBtn)
 
+//PAGE INDICATORS
+const indicatorOne = document.querySelectorAll('.indicator-one');
+const indicatorTwo = document.querySelectorAll('.indicator-two');
+const indicatorThree = document.querySelectorAll('.indicator-three');
+const indicatorFour = document.querySelectorAll('.indicator-four');
+
+indicatorOne.forEach(indicator => {
+    indicator.style.color = 'hsl(213, 96%, 18%)';
+    indicator.style.backgroundColor = 'hsl(229, 24%, 87%)';
+})
+
+//function to update page indicators
+const updateIndicator = (previousIndicator, nextIndicator) => {
+    previousIndicator.forEach(indicator => {
+        indicator.style.color = 'hsl(0, 0%, 100%)';
+        indicator.style.backgroundColor = '';
+    })
+
+    nextIndicator.forEach(indicator => {
+        indicator.style.color = 'hsl(213, 96%, 18%)';
+        indicator.style.backgroundColor = 'hsl(229, 24%, 87%)';
+    })
+}
+
+//function to validatw input containers in page 1
 function validateInput(container, regex, errorMessage){
     //get the value of the user's input from the container
     const userInput = container.value.trim();
@@ -44,10 +72,34 @@ pageOneNextBtn.forEach(btn => {
         isPhoneNumberValid = validatePhoneNumber();
 
         if(isNameValid && isMailValid && isPhoneNumberValid){
-            return console.log('validation successful');
-        } else {
-            return console.log('validation unsuccessful');
+            updateIndicator(indicatorOne, indicatorTwo);
+            pageOne.classList.add('hide');
+            pageTwo.classList.remove('hide');
         }
 
     })
+})
+
+
+
+
+//PAGE TWO
+const toggleBtn = document.querySelector('.slider');
+const arcadeYearlyPlan = document.getElementById('arcde-yearly-plan');
+const advancedYearlyPlan = document.getElementById('advanced-yearly-plan');
+const proYearlyPlan = document.getElementById('pro-yearly-plan');
+
+const arcadeMonthlyPrice = document.getElementById('arcade-monthly-price');
+const advancedMonthlyPrice = document.getElementById('advanced-monthly-price');
+const proMonthlyPrice = document.getElementById('pro-monthly-price');
+
+
+toggleBtn.addEventListener('click', () => {
+   arcadeYearlyPlan.classList.toggle('hide');
+   advancedYearlyPlan.classList.toggle('hide');
+   proYearlyPlan.classList.toggle('hide');
+   
+   arcadeMonthlyPrice.classList.toggle('hide');
+   advancedMonthlyPrice.classList.toggle('hide');
+   proMonthlyPrice.classList.toggle('hide');
 })
