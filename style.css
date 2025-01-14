@@ -68,7 +68,7 @@ h1, h2, h3, h4, p{
     font-weight: bold;
     padding: 0.5rem 1rem;
     color:hsla(213, 96%, 18%, 0.603);
-    right: 25%;
+    right: 24%;
     border: 0;
     position: relative;
     background-color: transparent;
@@ -194,7 +194,9 @@ you can always override the CSS styles when you dynamically add class styles*/
     color: var(--Marine-blue);
     margin-top: 0.3rem;
 }
-
+#bottom-container-desktop{
+    padding-left: 2rem;
+}
 
 
 /*class styles*/

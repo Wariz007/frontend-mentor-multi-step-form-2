@@ -38,7 +38,13 @@ const updateIndicator = (previousIndicator, nextIndicator) => {
     })
 }
 
-//function to validatw input containers in page 1
+//function to update next btns for each page
+function updateNextPageBtn(previousPageBtn, nextPageBtn){
+    previousPageBtn.forEach(btn => btn.classList.add('hide'));
+    nextPageBtn.forEach(btn => btn.classList.remove('hide'));
+}
+
+//function to validat input containers in page 1
 function validateInput(container, regex, errorMessage){
     //get the value of the user's input from the container
     const userInput = container.value.trim();
@@ -75,12 +81,15 @@ pageOneNextBtn.forEach(btn => {
             updateIndicator(indicatorOne, indicatorTwo);
             pageOne.classList.add('hide');
             pageTwo.classList.remove('hide');
+            /*add a forEach method to the go back btn variable because by default 
+            the variable is a nodelist. This because we have 2 btns and we are 
+            selecting the 2 with querySelectorAll*/
+            goBackBtnPageTwo.forEach(btn => btn.classList.remove('hide'));
+            updateNextPageBtn(pageOneNextBtn, pageTwoNextBtn);
         }
 
     })
 })
-
-
 
 
 //PAGE TWO
@@ -94,7 +103,8 @@ const advancedMonthlyPrice = document.getElementById('advanced-monthly-price');
 const proMonthlyPrice = document.getElementById('pro-monthly-price');
 
 const plansBtns = document.querySelectorAll('.plans-btns');
-console.log(plansBtns)
+const goBackBtnPageTwo = document.querySelectorAll('.go-back-btn');
+const pageTwoNextBtn = document.querySelectorAll('#nextBtnPage2');
 
 //loop through each btn in the node list
 plansBtns.forEach((btn) => {
@@ -117,3 +127,7 @@ toggleBtn.addEventListener('click', () => {
    advancedMonthlyPrice.classList.toggle('hide');
    proMonthlyPrice.classList.toggle('hide');
 })
+
+/*pageTwoNextBtn.addEventListener('click', () => {
+
+})*/
