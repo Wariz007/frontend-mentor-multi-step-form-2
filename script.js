@@ -93,6 +93,20 @@ const arcadeMonthlyPrice = document.getElementById('arcade-monthly-price');
 const advancedMonthlyPrice = document.getElementById('advanced-monthly-price');
 const proMonthlyPrice = document.getElementById('pro-monthly-price');
 
+const plansBtns = document.querySelectorAll('.plans-btns');
+console.log(plansBtns)
+
+//loop through each btn in the node list
+plansBtns.forEach((btn) => {
+    //add an event listener to each btn
+    btn.addEventListener('click', () => {
+        //remove the selected class style from all btns when a btn is clicked
+        plansBtns.forEach(btns => btns.classList.remove('selected'));
+        //add the selected class style to the clicked btn
+        btn.classList.add('selected');
+        console.log(`${btn.id} clicked`)
+    })
+})
 
 toggleBtn.addEventListener('click', () => {
    arcadeYearlyPlan.classList.toggle('hide');

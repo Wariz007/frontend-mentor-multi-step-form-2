@@ -14,10 +14,6 @@
     --White: hsl(0, 0%, 100%);
 }
 
-/*class styles*/
-.hide{display: none;}
-.show{display: block;}
-
 /*reset default settings*/
 html, body {
     margin: 0;
@@ -162,7 +158,10 @@ form{
     color: var(--Marine-blue);
     margin-bottom: 0.3rem;
 }
-#plans-btns-container button{
+/*another thing I have learnt is to use the exact name of the attribute
+you used to target the element in CSS to also select the element in JavaScript so 
+you can always override the CSS styles when you dynamically add class styles*/
+.plans-btns{
     width: 100%;
     padding: 1rem;
     margin-top: 1rem;
@@ -172,7 +171,7 @@ form{
     display: flex;
     align-items: center;
 }
-#plans-btns-container button:hover{
+.plans-btns:hover{
     border-color: var(--Purplish-blue);
     background-color: var(--Pastel-blue);
 }
@@ -195,6 +194,19 @@ form{
     color: var(--Marine-blue);
     margin-top: 0.3rem;
 }
+
+
+
+/*class styles*/
+.hide{display: none;}
+.show{display: block;}
+.selected{
+    border-color: var(--Purplish-blue);
+    background-color: var(--Pastel-blue);
+}
+/*something I have also learnt from this project is to always place 
+your class styles at the very end because if you don't, the styles of 
+the elements will override the class style you are trying to apply*/
 
 
 
