@@ -198,6 +198,41 @@ you can always override the CSS styles when you dynamically add class styles*/
     padding-left: 2rem;
 }
 
+/*PAGE THREE*/
+.page-three h1{
+    font-size: 1.5rem;
+    color: var(--Marine-blue);
+    margin-bottom: 0.3rem;
+}
+.checkbox-btn{
+    padding: 1rem;
+    gap: 10px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid var(--Cool-gray);
+    display: flex;
+}
+.checkbox-btn:hover{border-color: var(--Purplish-blue);}
+.name-of-addon{
+    color: var(--Marine-blue);
+    font-weight: bold;
+}
+.addon-details{
+    font-size: 0.8rem;
+    opacity: 50%;
+}
+.addon-price{color: var(--Purplish-blue);}
+.addon-and-price{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
 
 /*class styles*/
 .hide{display: none;}

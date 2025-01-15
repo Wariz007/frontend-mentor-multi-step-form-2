@@ -1,6 +1,8 @@
 //PAGES
 const pageOne = document.getElementById('page-one');
 const pageTwo = document.getElementById('page-two');
+const pageThreeMonthlyAddons = document.getElementById('page-three-monthly');
+const pageThreeYearlyAddons = document.getElementById('page-three-yearly');
 
 //PAGE ONE
 const nameContainer = document.getElementById('name');
@@ -152,6 +154,17 @@ const plans = [
     }
 ]
 
+//function to navigate to page three depending on if the user selects a monthly or yearly plan
+function pageThreeFunction(activePlan){
+    if(activePlan === 'monthly'){
+        pageThreeMonthlyAddons.classList.remove('hide');
+        pageThreeYearlyAddons.classList.add('hide');
+    } else {
+        pageThreeYearlyAddons.classList.remove('hide');
+        pageThreeMonthlyAddons.classList.add('hide');
+    }
+}
+
 pageTwoNextBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
         const activePlan = getActivePlan();
@@ -166,7 +179,6 @@ pageTwoNextBtn.forEach((btn) => {
             }
         });
 
-        //if no plan is selected return a warning in the console
         if(!selectedPlan){
             console.log('no plan selected');
             return;
@@ -184,6 +196,14 @@ pageTwoNextBtn.forEach((btn) => {
             planValue = plans[1][selectedPlan];
         }
 
+        pageTwo.classList.add('hide');
+        pageThreeFunction(activePlan);
+        updateIndicator(indicatorTwo, indicatorThree);
+
         console.log(`selected plan: ${selectedPlan}, Price: $${planValue}`);
     })
 })
+
+
+
+//PAGE THREE
