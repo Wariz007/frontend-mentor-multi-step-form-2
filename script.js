@@ -114,7 +114,6 @@ plansBtns.forEach((btn) => {
         plansBtns.forEach(btns => btns.classList.remove('selected'));
         //add the selected class style to the clicked btn
         btn.classList.add('selected');
-        console.log(`${btn.id} clicked`)
     })
 })
 
@@ -126,8 +125,65 @@ toggleBtn.addEventListener('click', () => {
    arcadeMonthlyPrice.classList.toggle('hide');
    advancedMonthlyPrice.classList.toggle('hide');
    proMonthlyPrice.classList.toggle('hide');
+
+   const activePlan = getActivePlan();
 })
 
-/*pageTwoNextBtn.addEventListener('click', () => {
+//function to get wether the user selected a monthly or yearly plan
+function getActivePlan(){
+    const isYearlyPlanActive = !arcadeMonthlyPrice.classList.contains('hide');
+    return isYearlyPlanActive ? 'monthly' : 'yearly';
+}
+//function assigned to a variable
+const activePlan = getActivePlan();
 
-})*/
+//values of plans depending on monthly or yearly plan
+const plans = [
+    monthly = {
+        arcade: 9,
+        advanced: 12,
+        pro: 15
+    },
+
+    yearly = {
+        arcade: 90,
+        advanced: 120,
+        pro: 150
+    }
+]
+
+pageTwoNextBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const activePlan = getActivePlan();
+        
+        //create an empty variable to store plan selected by the user
+        let selectedPlan = null;
+
+        //loop through each btn to see which one has the selected class attribute
+        plansBtns.forEach((btn) => {
+            if(btn.classList.contains('selected')){
+                selectedPlan = btn.id;
+            }
+        });
+
+        //if no plan is selected return a warning in the console
+        if(!selectedPlan){
+            console.log('no plan selected');
+            return;
+        }
+
+        //create a variable to store the value of the selected plan
+        let planValue;
+        /*use the if statement to dynamically pick the value based on if the
+        activePlan is set to monthly or yearly plan*/
+        if(activePlan === 'monthly'){
+            //get the value of the selected plan from the object 
+            //make sure the plan id is the same as that of the key name in the object
+            planValue = plans[0][selectedPlan];
+        } else {
+            planValue = plans[1][selectedPlan];
+        }
+
+        console.log(`selected plan: ${selectedPlan}, Price: $${planValue}`);
+    })
+})
