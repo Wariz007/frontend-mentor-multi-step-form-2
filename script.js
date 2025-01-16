@@ -207,3 +207,20 @@ pageTwoNextBtn.forEach((btn) => {
 
 
 //PAGE THREE
+const checkboxesContainer = document.getElementById('checkboxes-container');
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const checkboxLabel = document.querySelectorAll('.checkbox-btn');
+
+checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+       const label = checkbox.closest('label');
+
+       if(label){
+        if(checkbox.checked){
+            label.classList.add('selected');
+        } else {
+            label.classList.remove('selected');
+        }
+       }
+    })
+})

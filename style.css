@@ -164,7 +164,7 @@ you can always override the CSS styles when you dynamically add class styles*/
 .plans-btns{
     width: 100%;
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     border-radius: 5px;
     border: 1.5px solid var(--Cool-gray);
     background-color: transparent;
@@ -207,7 +207,7 @@ you can always override the CSS styles when you dynamically add class styles*/
 .checkbox-btn{
     padding: 1rem;
     gap: 10px;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
@@ -232,15 +232,6 @@ you can always override the CSS styles when you dynamically add class styles*/
 }
 
 
-
-
-/*class styles*/
-.hide{display: none;}
-.show{display: block;}
-.selected{
-    border-color: var(--Purplish-blue);
-    background-color: var(--Pastel-blue);
-}
 /*something I have also learnt from this project is to always place 
 your class styles at the very end because if you don't, the styles of 
 the elements will override the class style you are trying to apply*/
@@ -408,4 +399,14 @@ input:checked + .slider:before{
 }
 #toggle-container p{
     font-size: 0.9rem;
+}
+
+
+
+/*class styles*/
+.hide{display: none;}
+.show{display: block;}
+.selected{
+    border-color: var(--Purplish-blue);
+    background-color: var(--Pastel-blue);
 }
