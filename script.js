@@ -1,3 +1,7 @@
+const form = document.getElementById('formid');
+window.addEventListener('load', () => {
+    form.reset();
+})
 //PAGES
 const pageOne = document.getElementById('page-one');
 const pageTwo = document.getElementById('page-two');
@@ -20,6 +24,7 @@ const phoneNumberErrorMessage = document.getElementById('number-error-message');
 const pageOneNextBtn = document.querySelectorAll('.next-btn');
 const pageTwoNextBtn = document.querySelectorAll('#nextBtnPage2');
 const pageThreeNextBtn = document.querySelectorAll('#nextBtnPage3');
+const pageFourNextBtn = document.querySelectorAll('#nextBtnPage4');
 
 //PAGE INDICATORS
 const indicatorOne = document.querySelectorAll('.indicator-one');
@@ -169,6 +174,8 @@ function pageThreeFunction(activePlan){
     }
 }
 
+let planValue = null;
+
 pageTwoNextBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
         event.preventDefault();
@@ -189,8 +196,6 @@ pageTwoNextBtn.forEach((btn) => {
             return;
         }
 
-        //create a variable to store the value of the selected plan
-        let planValue;
         /*use the if statement to dynamically pick the value based on if the
         activePlan is set to monthly or yearly plan*/
         if(activePlan === 'monthly'){
@@ -209,8 +214,6 @@ pageTwoNextBtn.forEach((btn) => {
         console.log(`selected plan: ${selectedPlan}, Price: $${planValue}`);
     })
 })
-
-
 
 //PAGE THREE
 const checkboxesContainer = document.getElementById('checkboxes-container');
@@ -240,17 +243,49 @@ const checkboxPrice = [
     },
 
     yearly = {
-        onlineService: 10,
-        largerStorage: 20,
-        customizableProfile: 20
+        onlineServiceYr: 10,
+        largerStorageYr: 20,
+        customizableProfileYr: 20
     }
 ]
 
 pageThreeNextBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
         event.preventDefault();
-
         const activePlan = getActivePlan();
+
+        const selectedCheckboxes = [];
+
+        checkboxes.forEach((checkbox) => {
+            if(checkbox.checked){
+                selectedCheckboxes.push(checkbox.id);
+            }
+        })
+
+        if(selectedCheckboxes.length === 0){
+            console.log('no addon selected');
+            return;
+        }
+
+        console.log('selected addons:', selectedCheckboxes);
+
+        let totalPrice = 0;
+
+        selectedCheckboxes.forEach((id) => {
+            let addonValue;
+            if(activePlan === 'monthly'){
+                addonValue = checkboxPrice[0][id];
+            } else {
+                addonValue = checkboxPrice[1][id];
+            }
+
+            if(addonValue !== undefined){
+                totalPrice += addonValue;
+                console.log(`${id}: ${addonValue}`);
+            }
+        });
+
+        console.log('Total price:', totalPrice);
 
         if(activePlan === 'monthly'){
             pageThreeMonthlyAddons.classList.add('hide');
@@ -259,6 +294,16 @@ pageThreeNextBtn.forEach((btn) => {
             pageThreeYearlyAddons.classList.add('hide');
             pageFourYearlyReceipt.classList.remove('hide');
         }
+
+        updateIndicator(indicatorThree, indicatorFour);
+        updateNextPageBtn(pageThreeNextBtn, pageFourNextBtn);
+
+        monthlyReceiptPlanPrice.textContent = `$${planValue}`;
+        yearlyReceiptPlanPrice.textContent = `$${planValue}`;
     })
 })
+
+//PAGE FOUR
+const monthlyReceiptPlanPrice = document.getElementById('plan-price-monthly');
+const yearlyReceiptPlanPrice = document.getElementById('plan-price-yearly');
 
