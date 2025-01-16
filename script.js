@@ -3,6 +3,8 @@ const pageOne = document.getElementById('page-one');
 const pageTwo = document.getElementById('page-two');
 const pageThreeMonthlyAddons = document.getElementById('page-three-monthly');
 const pageThreeYearlyAddons = document.getElementById('page-three-yearly');
+const pageFourMonthlyReceipt = document.getElementById('page-four-monthly');
+const pageFourYearlyReceipt = document.getElementById('page-four-yearly');
 
 //PAGE ONE
 const nameContainer = document.getElementById('name');
@@ -14,7 +16,10 @@ const emailErrorMessage = document.getElementById('email-error-message');
 const phoneNumberContainer = document.getElementById('number');
 const phoneNumberErrorMessage = document.getElementById('number-error-message');
 
+//BUTTONS TO NAVIGATE TO NEXT PAGE
 const pageOneNextBtn = document.querySelectorAll('.next-btn');
+const pageTwoNextBtn = document.querySelectorAll('#nextBtnPage2');
+const pageThreeNextBtn = document.querySelectorAll('#nextBtnPage3');
 
 //PAGE INDICATORS
 const indicatorOne = document.querySelectorAll('.indicator-one');
@@ -106,7 +111,6 @@ const proMonthlyPrice = document.getElementById('pro-monthly-price');
 
 const plansBtns = document.querySelectorAll('.plans-btns');
 const goBackBtnPageTwo = document.querySelectorAll('.go-back-btn');
-const pageTwoNextBtn = document.querySelectorAll('#nextBtnPage2');
 
 //loop through each btn in the node list
 plansBtns.forEach((btn) => {
@@ -166,7 +170,8 @@ function pageThreeFunction(activePlan){
 }
 
 pageTwoNextBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
         const activePlan = getActivePlan();
         
         //create an empty variable to store plan selected by the user
@@ -199,6 +204,7 @@ pageTwoNextBtn.forEach((btn) => {
         pageTwo.classList.add('hide');
         pageThreeFunction(activePlan);
         updateIndicator(indicatorTwo, indicatorThree);
+        updateNextPageBtn(pageTwoNextBtn, pageThreeNextBtn);
 
         console.log(`selected plan: ${selectedPlan}, Price: $${planValue}`);
     })
@@ -211,6 +217,7 @@ const checkboxesContainer = document.getElementById('checkboxes-container');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const checkboxLabel = document.querySelectorAll('.checkbox-btn');
 
+//logic to select checkboxes
 checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
        const label = checkbox.closest('label');
@@ -224,3 +231,34 @@ checkboxes.forEach((checkbox) => {
        }
     })
 })
+
+const checkboxPrice = [
+    monthly = {
+        onlineService: 1,
+        largerStorage: 2,
+        customizableProfile: 2
+    },
+
+    yearly = {
+        onlineService: 10,
+        largerStorage: 20,
+        customizableProfile: 20
+    }
+]
+
+pageThreeNextBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const activePlan = getActivePlan();
+
+        if(activePlan === 'monthly'){
+            pageThreeMonthlyAddons.classList.add('hide');
+            pageFourMonthlyReceipt.classList.remove('hide');
+        } else {
+            pageThreeYearlyAddons.classList.add('hide');
+            pageFourYearlyReceipt.classList.remove('hide');
+        }
+    })
+})
+

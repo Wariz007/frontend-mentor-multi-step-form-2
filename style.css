@@ -51,7 +51,7 @@ h1, h2, h3, h4, p{
     position: absolute;
 }
 /*Next button*/
-.next-btn{
+.next-btn-styles{
     padding: 0.7rem 1.5rem;
     border: 0;
     font-size: 1rem;
@@ -61,7 +61,7 @@ h1, h2, h3, h4, p{
     position: relative;
     left: 75%;
 }
-.next-btn:hover{background-color: hsla(213, 96%, 18%, 0.603);}
+.next-btn-styles:hover{background-color: hsla(213, 96%, 18%, 0.603);}
 /*Go back button*/
 .go-back-btn{
     font-size: 1rem;
@@ -122,7 +122,7 @@ form{
     opacity: 50%;
 }
 .page-one-containers{
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
 }
 #page-one-input-container label{
     color: var(--Marine-blue);
@@ -232,9 +232,63 @@ you can always override the CSS styles when you dynamically add class styles*/
 }
 
 
-/*something I have also learnt from this project is to always place 
-your class styles at the very end because if you don't, the styles of 
-the elements will override the class style you are trying to apply*/
+/*PAGE FOUR*/   
+#receipt-container{
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: var(--Pastel-blue);
+    border-radius: 5px;
+}
+#first-row{
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--Cool-gray);
+    margin-bottom: 0.5rem;
+}
+#plan-and-duration{
+    font-weight: bold;
+    color: var(--Marine-blue);
+    margin-bottom: 0.2rem;
+}
+#change-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#change-container a{
+    opacity: 50%;
+    color: black;
+}
+#change-container p{
+    color: var(--Marine-blue);
+    font-weight: bold;
+}
+.addons-container{
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.addon-tag{
+    opacity: 50%;
+}
+.addon-price-receipt{
+    color: var(--Marine-blue);
+}
+#total-container{
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#total-price{
+    color: var(--Purplish-blue);
+}
+
+
+
+
+
+
+
 
 
 
@@ -402,7 +456,9 @@ input:checked + .slider:before{
 }
 
 
-
+/*something I have also learnt from this project is to always place 
+your class styles at the very end because if you don't, the styles of 
+the elements will override the class style you are trying to apply*/
 /*class styles*/
 .hide{display: none;}
 .show{display: block;}
