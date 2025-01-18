@@ -58,6 +58,12 @@ function updateNextPageBtn(btnToRemove, btnToAdd){
     btnToAdd.forEach(btn => btn.classList.remove('hide'));
 }
 
+//function to update go back btns
+function updateGoBackBtn(btnToRemove, btnToAdd){
+    btnToRemove.forEach((btn) => btn.classList.add('hide'));
+    btnToAdd.forEach((btn) => btn.classList.remove('hide'))
+}
+
 //function to validat input containers in page 1
 function validateInput(container, regex, errorMessage){
     //get the value of the user's input from the container
@@ -406,11 +412,7 @@ const pageTwoBackBtn = document.querySelectorAll('#go-back-btn-2');
 const pageThreeBackBtn = document.querySelectorAll('#go-back-btn-3');
 const pageFourBackBtn = document.querySelectorAll('#go-back-btn-4');
 
-//function to update go back btns
-function updateGoBackBtn(btnToRemove, btnToAdd){
-    btnToRemove.forEach((btn) => btn.classList.add('hide'));
-    btnToAdd.forEach((btn) => btn.classList.remove('hide'))
-}
+
 
 pageOneBackBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
