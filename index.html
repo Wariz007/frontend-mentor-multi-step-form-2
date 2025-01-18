@@ -12,11 +12,11 @@
     <div id="top-background-image"></div>
 
     <!--MOBILE-->
-    <div id="bottom-container">
+    <div id="bottom-container" class="goBack-and-nextBtn-container">
         <button class="next-btn next-btn-styles">Next</button>
         <button class="next-btn-styles hide" id="nextBtnPage2">Next</button>
         <button class="next-btn-styles hide" id="nextBtnPage3">Next</button>
-        <button class="next-btn-styles hide" id="nextBtnPage4">Next</button>
+        <button class="next-btn-styles hide" id="nextBtnPage4">Confirm</button>
 
         <button class="go-back-btn hide">Go Back</button>
     </div>
@@ -98,7 +98,7 @@
                                 <label for="number">Phone Number</label><br>
                                 <p class="error-message hide" id="number-error-message">This field is required</p>
                             </div>
-                            <input type="text" id="number" placeholder="e.g +234 9033 1184 77">
+                            <input type="text" id="number" placeholder="e.g 09033118477">
                         </div>
         
                     </div>
@@ -107,6 +107,7 @@
                 <div id="page-two" class="hide">
                     <h1>Select Your Plan</h1>
                     <p id="page-one-instruction">You have the option of monthly or yearly billing.</p>
+                    <p id="page-two-error-message" class="hide">You have to pick a plan</p>
 
                     <div id="plans-btns-container">
 
@@ -165,7 +166,7 @@
 
                 <div id="page-three-monthly" class="hide page-three">
                     <h1>Pick add-ons</h1>
-                    <p id="page-one-instruction">Add-ons helps enhance your gaming experience</p>
+                    <p id="page-one-instruction">Add-ons helps enhance your gaming experience (Optional)</p>
 
                     <div id="checkboxes-container">
 
@@ -208,7 +209,7 @@
 
                 <div id="page-three-yearly" class="hide page-three">
                     <h1>Pick add-ons</h1>
-                    <p id="page-one-instruction">Add-ons helps enhance your gaming experience</p>
+                    <p id="page-one-instruction">Add-ons helps enhance your gaming experience (Optional)</p>
 
                     <div id="checkboxes-container">
 
@@ -318,14 +319,27 @@
                         <p id="total-price-yearly" class="total-price-style">+$120/Yr</p>
                     </div>
                 </div>
+
+                <div id="page-five" class="hide">
+                    <img src="assets/images/icon-thank-you.svg" alt="thank you icon">
+
+                    <h2>Thank you</h2>
+
+                    <p>
+                        Thanks for confirming your subscription! 
+                        We hope you have fun using our platform. 
+                        If you ever need support, please feel free to 
+                        email us at support@loremgaming.com 
+                    </p>
+                </div>
             </div>
     
     
-            <div id="bottom-container-desktop">
+            <div id="bottom-container-desktop" class="goBack-and-nextBtn-container">
                 <button class="next-btn next-btn-styles" id="nextBtnPg1">Next</button>
                 <button class="next-btn-styles hide" id="nextBtnPage2">Next</button>
                 <button class="next-btn-styles hide" id="nextBtnPage3">Next</button>
-                <button class="next-btn-styles hide" id="nextBtnPage4">Next</button>
+                <button class="next-btn-styles hide" id="nextBtnPage4">Confirm</button>
 
                 <button class="go-back-btn hide">Go Back</button>
             </div>

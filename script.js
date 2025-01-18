@@ -9,6 +9,7 @@ const pageThreeMonthlyAddons = document.getElementById('page-three-monthly');
 const pageThreeYearlyAddons = document.getElementById('page-three-yearly');
 const pageFourMonthlyReceipt = document.getElementById('page-four-monthly');
 const pageFourYearlyReceipt = document.getElementById('page-four-yearly');
+const pageFive = document.getElementById('page-five');
 
 //PAGE ONE
 const nameContainer = document.getElementById('name');
@@ -117,6 +118,8 @@ const proMonthlyPrice = document.getElementById('pro-monthly-price');
 const plansBtns = document.querySelectorAll('.plans-btns');
 const goBackBtnPageTwo = document.querySelectorAll('.go-back-btn');
 
+const pageTwoErrorMessage = document.getElementById('page-two-error-message');
+
 //loop through each btn in the node list
 plansBtns.forEach((btn) => {
     //add an event listener to each btn
@@ -191,6 +194,7 @@ pageTwoNextBtn.forEach((btn) => {
 
         if(!selectedPlan){
             console.log('no plan selected');
+            pageTwoErrorMessage.classList.remove('hide');
             return;
         }
         
@@ -217,6 +221,7 @@ pageTwoNextBtn.forEach((btn) => {
 const checkboxesContainer = document.getElementById('checkboxes-container');
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const checkboxLabel = document.querySelectorAll('.checkbox-btn');
+const pageThreeErrorMessage = document.getElementById('page-three-error-message');
 
 //logic to select checkboxes
 checkboxes.forEach((checkbox) => {
@@ -295,10 +300,10 @@ pageThreeNextBtn.forEach((btn) => {
         }
 
         //if the array is empty, restrict the user from moving forward
-        if(selectedCheckboxes.length === 0){
+        /*if(selectedCheckboxes.length === 0){
             console.log('no addon selected');
             return;
-        }
+        }*/
 
         /**create a total price variable with a value of 0. This
          * is where we're going to add the values of the addons
@@ -348,8 +353,8 @@ pageThreeNextBtn.forEach((btn) => {
         typeOfPlanMonthly.textContent = `${selectedPlan.charAt(0).toUpperCase()}${selectedPlan.slice(1)} (Monthly)`;
         typeOfPlanYearly.textContent = `${selectedPlan.charAt(0).toUpperCase()}${selectedPlan.slice(1)} (Yearly)`;
 
-        totalPerMonth.textContent = `+$${totalPrice + planValue}/mo`;
-        totalPerYear.textContent = `+$${totalPrice + planValue}/yr`;
+        totalPerMonth.textContent = `$${totalPrice + planValue}/mo`;
+        totalPerYear.textContent = `$${totalPrice + planValue}/yr`;
     })
 })
 
@@ -370,3 +375,25 @@ const cpAddonContainer = document.getElementById('cp-addon-container');
 const osAddonContainerYr = document.getElementById('os-addon-container-yr');
 const lsAddonContainerYr = document.getElementById('ls-addon-container-yr');
 const cpAddonContainerYr = document.getElementById('cp-addon-container-yr');
+
+const btnsContainer = document.querySelectorAll('.goBack-and-nextBtn-container');
+
+pageFourNextBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const activePlan = getActivePlan();
+
+
+        if(activePlan === 'monthly'){
+            pageFourMonthlyReceipt.classList.add('hide');
+            pageFive.classList.remove('hide');
+        } else {
+            pageFourYearlyReceipt.classList.add('hide');
+            pageFive.classList.remove('hide');
+        }
+
+        btnsContainer.forEach((container) => {
+            container.classList.add('hide');
+        })
+    })
+})

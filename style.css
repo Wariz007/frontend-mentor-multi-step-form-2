@@ -197,6 +197,10 @@ you can always override the CSS styles when you dynamically add class styles*/
 #bottom-container-desktop{
     padding-left: 2rem;
 }
+#page-two-error-message{
+    font-size: 0.8rem;
+    color: red;
+}
 
 /*PAGE THREE*/
 .page-three h1{
@@ -230,6 +234,10 @@ you can always override the CSS styles when you dynamically add class styles*/
     align-items: center;
     justify-content: space-between;
 }
+/*#page-three-error-message{
+    font-size: 0.8rem;
+    color: red;
+}*/
 
 
 /*PAGE FOUR*/   
@@ -282,16 +290,28 @@ you can always override the CSS styles when you dynamically add class styles*/
 .total-price-style{
     color: var(--Purplish-blue);
 }
+#nextBtnPage4{
+    padding: 0.7rem 1rem;
+    background-color: var(--Purplish-blue);
+}
+#nextBtnPage4:hover{
+    background-color: hsla(243, 100%, 62%, 0.845);;
+}
 
 
-
-
-
-
-
-
-
-
+/*PAGE FIVE*/
+#page-five{
+    text-align: center;
+}
+#page-five h2{
+    color: var(--Marine-blue);
+    margin: 0.5rem;
+}
+#page-five p{
+    opacity: 50%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
 
 /*MEDIA QUERY*/
 /*to remove the next btn in the desktop screensize when 
