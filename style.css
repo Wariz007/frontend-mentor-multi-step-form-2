@@ -244,7 +244,7 @@ you can always override the CSS styles when you dynamically add class styles*/
     border-bottom: 1px solid var(--Cool-gray);
     margin-bottom: 0.5rem;
 }
-#plan-and-duration{
+.plan-and-duration{
     font-weight: bold;
     color: var(--Marine-blue);
     margin-bottom: 0.2rem;
@@ -279,7 +279,7 @@ you can always override the CSS styles when you dynamically add class styles*/
     justify-content: space-between;
     align-items: center;
 }
-#total-price{
+.total-price-style{
     color: var(--Purplish-blue);
 }
 

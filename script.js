@@ -175,14 +175,12 @@ function pageThreeFunction(activePlan){
 }
 
 let planValue = null;
+let selectedPlan = null;
 
 pageTwoNextBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
         event.preventDefault();
         const activePlan = getActivePlan();
-        
-        //create an empty variable to store plan selected by the user
-        let selectedPlan = null;
 
         //loop through each btn to see which one has the selected class attribute
         plansBtns.forEach((btn) => {
@@ -195,7 +193,7 @@ pageTwoNextBtn.forEach((btn) => {
             console.log('no plan selected');
             return;
         }
-
+        
         /*use the if statement to dynamically pick the value based on if the
         activePlan is set to monthly or yearly plan*/
         if(activePlan === 'monthly'){
@@ -223,9 +221,12 @@ const checkboxLabel = document.querySelectorAll('.checkbox-btn');
 //logic to select checkboxes
 checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
+        //use the 'closest' DOM selector to find the closest label tag in the DOM
        const label = checkbox.closest('label');
 
+       //the if statement is used to make sure a label exist for that checkbox. If not the rest of the logic does not proceed
        if(label){
+        //if the checkbox is checked, add the selected class style to the closest label
         if(checkbox.checked){
             label.classList.add('selected');
         } else {
@@ -252,8 +253,10 @@ const checkboxPrice = [
 pageThreeNextBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
         event.preventDefault();
+        //active plan to always check if it's a monthly or yearly plan
         const activePlan = getActivePlan();
 
+        //an empty array to store push the checkboxes into
         const selectedCheckboxes = [];
 
         checkboxes.forEach((checkbox) => {
@@ -261,24 +264,65 @@ pageThreeNextBtn.forEach((btn) => {
                 selectedCheckboxes.push(checkbox.id);
             }
         })
+        console.log(selectedCheckboxes);
 
+
+        /**logic to toggle the addons selected on/off in the receipt page
+         * depending on if the user selected it
+         */
+        if(onlineService.checked){
+            osAddonContainer.classList.toggle('hide');
+        }
+
+        if(largerStorage.checked){
+            lsAddonContainer.classList.toggle('hide');
+        }
+
+        if(customizableProfile.checked){
+            cpAddonContainer.classList.toggle('hide');
+        }
+
+        if(onlineServiceYr.checked){
+            osAddonContainerYr.classList.toggle('hide');
+        }
+
+        if(largerStorageYr.checked){
+            lsAddonContainerYr.classList.toggle('hide');
+        }
+
+        if(customizableProfileYr.checked){
+            cpAddonContainerYr.classList.toggle('hide');
+        }
+
+        //if the array is empty, restrict the user from moving forward
         if(selectedCheckboxes.length === 0){
             console.log('no addon selected');
             return;
         }
 
-        console.log('selected addons:', selectedCheckboxes);
-
+        /**create a total price variable with a value of 0. This
+         * is where we're going to add the values of the addons
+         */
         let totalPrice = 0;
 
+        //varaible to assign the value of each addon
+        let addonValue;
+
         selectedCheckboxes.forEach((id) => {
-            let addonValue;
             if(activePlan === 'monthly'){
+                //the 'checkboxPrice' here is an array of objects used to store the values of each addon
+                /**indexs are used to access arrays, so index 0 is for monthly values
+                 * index 1 is for yearly addon values.
+                 * Note that the id of each checkbox must be exactly the same as the key name it is trying to access
+                */
                 addonValue = checkboxPrice[0][id];
             } else {
                 addonValue = checkboxPrice[1][id];
             }
 
+            /**this logic accumulates the values of selected checkboxes 
+             * to give us the total price
+             */
             if(addonValue !== undefined){
                 totalPrice += addonValue;
                 console.log(`${id}: ${addonValue}`);
@@ -300,6 +344,12 @@ pageThreeNextBtn.forEach((btn) => {
 
         monthlyReceiptPlanPrice.textContent = `$${planValue}`;
         yearlyReceiptPlanPrice.textContent = `$${planValue}`;
+
+        typeOfPlanMonthly.textContent = `${selectedPlan.charAt(0).toUpperCase()}${selectedPlan.slice(1)} (Monthly)`;
+        typeOfPlanYearly.textContent = `${selectedPlan.charAt(0).toUpperCase()}${selectedPlan.slice(1)} (Yearly)`;
+
+        totalPerMonth.textContent = `+$${totalPrice + planValue}/mo`;
+        totalPerYear.textContent = `+$${totalPrice + planValue}/yr`;
     })
 })
 
@@ -307,3 +357,16 @@ pageThreeNextBtn.forEach((btn) => {
 const monthlyReceiptPlanPrice = document.getElementById('plan-price-monthly');
 const yearlyReceiptPlanPrice = document.getElementById('plan-price-yearly');
 
+const typeOfPlanMonthly = document.getElementById('plan-type-monthly');
+const typeOfPlanYearly = document.getElementById('plan-type-yearly');
+
+const totalPerMonth = document.getElementById('total-price-monthly');
+const totalPerYear = document.getElementById('total-price-yearly');
+
+const osAddonContainer = document.getElementById('os-addon-container');
+const lsAddonContainer = document.getElementById('ls-addon-container');
+const cpAddonContainer = document.getElementById('cp-addon-container');
+
+const osAddonContainerYr = document.getElementById('os-addon-container-yr');
+const lsAddonContainerYr = document.getElementById('ls-addon-container-yr');
+const cpAddonContainerYr = document.getElementById('cp-addon-container-yr');
