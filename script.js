@@ -1,3 +1,4 @@
+//REFRESH THE FORM ON EVERY RELOAD
 const form = document.getElementById('formid');
 window.addEventListener('load', () => {
     form.reset();
@@ -52,9 +53,9 @@ const updateIndicator = (previousIndicator, nextIndicator) => {
 }
 
 //function to update next btns for each page
-function updateNextPageBtn(previousPageBtn, nextPageBtn){
-    previousPageBtn.forEach(btn => btn.classList.add('hide'));
-    nextPageBtn.forEach(btn => btn.classList.remove('hide'));
+function updateNextPageBtn(btnToRemove, btnToAdd){
+    btnToRemove.forEach(btn => btn.classList.add('hide'));
+    btnToAdd.forEach(btn => btn.classList.remove('hide'));
 }
 
 //function to validat input containers in page 1
@@ -97,7 +98,7 @@ pageOneNextBtn.forEach(btn => {
             /*add a forEach method to the go back btn variable because by default 
             the variable is a nodelist. This because we have 2 btns and we are 
             selecting the 2 with querySelectorAll*/
-            goBackBtnPageTwo.forEach(btn => btn.classList.remove('hide'));
+            pageOneBackBtn.forEach(btn => btn.classList.remove('hide'));
             updateNextPageBtn(pageOneNextBtn, pageTwoNextBtn);
         }
 
@@ -116,7 +117,6 @@ const advancedMonthlyPrice = document.getElementById('advanced-monthly-price');
 const proMonthlyPrice = document.getElementById('pro-monthly-price');
 
 const plansBtns = document.querySelectorAll('.plans-btns');
-const goBackBtnPageTwo = document.querySelectorAll('.go-back-btn');
 
 const pageTwoErrorMessage = document.getElementById('page-two-error-message');
 
@@ -212,6 +212,7 @@ pageTwoNextBtn.forEach((btn) => {
         pageThreeFunction(activePlan);
         updateIndicator(indicatorTwo, indicatorThree);
         updateNextPageBtn(pageTwoNextBtn, pageThreeNextBtn);
+        updateGoBackBtn(pageOneBackBtn, pageTwoBackBtn);
 
         console.log(`selected plan: ${selectedPlan}, Price: $${planValue}`);
     })
@@ -346,6 +347,7 @@ pageThreeNextBtn.forEach((btn) => {
 
         updateIndicator(indicatorThree, indicatorFour);
         updateNextPageBtn(pageThreeNextBtn, pageFourNextBtn);
+        updateGoBackBtn(pageTwoBackBtn, pageThreeBackBtn);
 
         monthlyReceiptPlanPrice.textContent = `$${planValue}`;
         yearlyReceiptPlanPrice.textContent = `$${planValue}`;
@@ -395,5 +397,69 @@ pageFourNextBtn.forEach((btn) => {
         btnsContainer.forEach((container) => {
             container.classList.add('hide');
         })
+    })
+})
+
+//BUTTONS TO NAVIGATE TO THE PREVIOUS PAGE
+const pageOneBackBtn = document.querySelectorAll('#go-back-btn-1');
+const pageTwoBackBtn = document.querySelectorAll('#go-back-btn-2');
+const pageThreeBackBtn = document.querySelectorAll('#go-back-btn-3');
+const pageFourBackBtn = document.querySelectorAll('#go-back-btn-4');
+
+//function to update go back btns
+function updateGoBackBtn(btnToRemove, btnToAdd){
+    btnToRemove.forEach((btn) => btn.classList.add('hide'));
+    btnToAdd.forEach((btn) => btn.classList.remove('hide'))
+}
+
+pageOneBackBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        pageTwo.classList.add('hide');
+        pageOne.classList.remove('hide');
+
+        pageOneBackBtn.forEach((btn) => btn.classList.add('hide'));
+
+        updateNextPageBtn(pageTwoNextBtn, pageOneNextBtn);
+        updateIndicator(indicatorTwo, indicatorOne);
+    })
+})
+
+pageTwoBackBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const activePlan = getActivePlan();
+
+        if(activePlan === 'monthly'){
+            pageThreeMonthlyAddons.classList.add('hide');
+            pageTwo.classList.remove('hide');
+        } else {
+            pageThreeYearlyAddons.classList.add('hide');
+            pageTwo.classList.remove('hide');
+        }
+
+        updateGoBackBtn(pageTwoBackBtn, pageOneBackBtn);
+        updateNextPageBtn(pageThreeNextBtn, pageTwoNextBtn);
+        updateIndicator(indicatorThree, indicatorTwo);
+    })
+})
+
+pageThreeBackBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const activePlan = getActivePlan();
+
+        if(activePlan === 'monthly'){
+            pageFourMonthlyReceipt.classList.add('hide');
+            pageThreeMonthlyAddons.classList.remove('hide');
+        } else {
+            pageFourYearlyReceipt.classList.add('hide');
+            pageThreeYearlyAddons.classList.remove('hide');
+        }
+
+        updateGoBackBtn(pageThreeBackBtn, pageTwoBackBtn);
+        updateNextPageBtn(pageFourNextBtn,pageThreeNextBtn);
+        updateIndicator(indicatorFour, indicatorThree);
     })
 })
